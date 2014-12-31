@@ -1,4 +1,4 @@
 lentodiilit
 ===========
 
-Lentodiilit API
+Lentodiilit API, read more from http://apisuomi.fi/apis/lentodiilit/api/
