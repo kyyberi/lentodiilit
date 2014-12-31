@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lentodiilit Unofficial Open API - The API provides JSON listings of data related to lentodiilit.fi service. </title>
+<link rel="stylesheet" href="styles.css" type="text/css" />
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--
+corps, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
+
+Download: http://zypopwebtemplates.com/
+
+License: Creative Commons Attribution
+//-->
+</head>
+<body>
+<div id="container">
+    <header>
+	<div class="width">
+    		<h1><a href="/">Lentodiilit<span style="margin-left:20px;">Unofficial Open API</span></a></h1>
+        	<h2>JSON API to best flight deals in Finland</h2>
+	</div>
+    </header>
+    <nav>
+	<div class="width">
+    		<ul>
+        		<li class="start selected"><a href="http://apisuomi.fi/apis/lentodiilit/api/">Home</a></li>
+        	</ul>
+	</div>
+    </nav>
+
+
+    <div id="body" class="width">
+
+		
+
+		<section id="content">
+
+	    <article>
+				
+			
+			<h1>Light documentation</h1>
+			<div class="article-info">Written <time datetime="2014-12-31">31 Dec 2014</time> by <a href="https://twitter.com/kyyberi" rel="author">Jarkko Moilanen</a></div>
+
+<p>The API provides JSON listings of data related to lentodiilit.fi service. The database is updated hourly. In other words, there are moments when you will not get the most recent listing about 
+the situation.</p> 
+
+<h3>About implementation</h3>
+<p>
+Database update is implemented with Ruby program which scrapes the data from lentodiilit.fi pages. API is build on top of <b>Epiphany PHP Framework</b>. It is a micro PHP framework that's fast, easy, clean and RESTful. The framework does not do a lot of magic under the hood. 
+It is, by design, very simple and very powerful. <a href="https://github.com/jmathai/epiphany">https://github.com/jmathai/epiphany</a>
+
+</p>
+
+<h3>Unofficial experimental Open API</h3>
+<img src="images/github.png" style="float:right;"/>
+<p>Furthermore, this API is <b>unofficial</b>. API is not part of the lentodiilit.fi service and is maintained by Jarkko Moilanen. This API is open API. Source code for the API is 
+in <a href="https://github.com/kyyberi/lentodiilit">Github</a>.</p>
+
+		<h2><a href="http://apisuomi.fi/apis/lentodiilit/api/deals">/deals</a></h2>
+<ul>
+        <li>Returns JSON listing of 100 (max maybe less) last deals</li>
+        <li>Order descending == latest first</li>
+</ul>
+<code>
+<pre>
+{"postid":"post-19156",
+     "url": "http://www.lentodiilit....n-501-euroa/",
+     "title": "Lennot Indonesiaan 501 euroa",
+     "categories": "Lentotarjoukset ",
+     "tags": "Aasia Indonesia Jakarta Lufthansa",
+     "published": "2014-12-31 04:54:31",
+     "price": "1.-15.2., 501,81 €"
+     },
+{"postid":"post-19269",
+     "url": "http://www.lentodiilit....-135-euroa/",
+     "title": "Viikonloppumatka Osloon 135 euroa",
+     "categories": "Matkatarjoukset ",
+     "tags": "Matkatarjoukset Oslo",
+     "published": "2014-12-31 04:52:44",
+     "price": "7.-8.2., 269,19€/2=134,60€/henkilö"
+     },
+</pre>
+</code>
+
+<h2><a href="http://apisuomi.fi/apis/lentodiilit/api/categories">/categories</a></h2>
+<ul>
+        <li>Returns JSON listing of different categories used in deals</li>
+</ul>
+
+<code>
+<pre>
+{ "categories": [
+     {"name": "Lentotarjoukset "},
+     {"name": "Matkatarjoukset "},
+     {"name": "Hotellitarjoukset "},
+     {"name": "Muut "}],
+</pre>
+</code>
+
+
+
+
+		</article>
+        </section>
+        
+        <aside class="sidebar">
+	
+            <ul>	
+                <li>
+                    <h4>About us</h4>
+                    <ul>
+                        <li class="text">
+                        	<p style="margin: 0;">Jarkko Moilanen is founder of API:Suomi community and acts as one of the API ambassadors in Finland and Europe. 				
+				<br/><a href="http://fi.linkedin.com/in/jarkkomoilanen" class="readmore">Read more from Linkedin &raquo;</a></p>
+                        </li>
+		    </ul>
+		
+                   <h4>About API:Suomi</h4>
+                    <ul>
+                        <li class="text">
+				<img src="http://apisuomi.fi/wp-content/uploads/2014/06/apisuomi-small.png"/>
+                                <p style="margin: 0;">API:Suomi is the leading API listing service in Finland. API listing is based on community reports. Community organizes 
+				events such as API-lunches around Finland.  
+                                <br/><a href="http://apisuomi.fi" class="readmore">Read more from apisuomi.fi &raquo;</a></p>
+                        </li>
+
+
+                    </ul>
+                </li>
+                
+            </ul>
+		
+        </aside>
+    	<div class="clear"></div>
+    </div>
+    <footer>
+        <div class="footer-content width">
+<!-- 
+            <ul>
+            	<li><h4>Proin accumsan</h4></li>
+                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                <li><a href="#">Blandit elementum</a></li>
+                <li><a href="#">Proin placerat accumsan</a></li>
+                <li><a href="#">Morbi hendrerit libero </a></li>
+                <li><a href="#">Curabitur sit amet tellus</a></li>
+            </ul>
+            
+            <ul>
+            	<li><h4>Condimentum</h4></li>
+                <li><a href="#">Curabitur sit amet tellus</a></li>
+                <li><a href="#">Morbi hendrerit libero </a></li>
+                <li><a href="#">Proin placerat accumsan</a></li>
+                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                <li><a href="#">Cras dictum</a></li>
+            </ul>
+            
+            <ul class="endfooter">
+            	<li><h4>Suspendisse</h4></li>
+                <li><a href="#">Morbi hendrerit libero </a></li>
+                <li><a href="#">Proin placerat accumsan</a></li>
+                <li><a href="#">Rutrum nulla a ultrices</a></li>
+                <li><a href="#">Curabitur sit amet tellus</a></li>
+                <li><a href="#">Donec in ligula nisl.</a></li>
+            </ul>
+            
+     -->       <div class="clear"></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; YourSite 2013. <a href="http://zypopwebtemplates.com/">Free CSS Website Templates</a> by ZyPOP</p>
+         </div>
+    </footer>
+</div>
+</body>
+</html>
