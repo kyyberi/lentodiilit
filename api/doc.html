@@ -39,7 +39,6 @@ License: Creative Commons Attribution
 		<section id="content">
 
 	    <article>
-				
 			
 			<h1>Light documentation</h1>
 			<div class="article-info">Written <time datetime="2014-12-31">31 Dec 2014</time> by <a href="https://twitter.com/kyyberi" rel="author">Jarkko Moilanen</a></div>
@@ -49,16 +48,32 @@ the situation.</p>
 
 <h3>About implementation</h3>
 <p>
-Database update is implemented with Ruby program which scrapes the data from lentodiilit.fi pages. API is build on top of <b>Epiphany PHP Framework</b>. It is a micro PHP framework that's fast, easy, clean and RESTful. The framework does not do a lot of magic under the hood. 
+Database update is implemented with Ruby program which scrapes the data from lentodiilit.fi pages.</p>
+
+<blockquote>
+<p>
+API is build on top of <b>Epiphany PHP Framework</b>.
+</p>
+</blockquote> 
+<p>
+It is a micro PHP framework that's fast, easy, clean and RESTful. The framework does not do a lot of magic under the hood. 
 It is, by design, very simple and very powerful. <a href="https://github.com/jmathai/epiphany">https://github.com/jmathai/epiphany</a>. </p>
+
+<blockquote>
 <p>API is <a href="http://enable-cors.org/">CORS enabled</a> which means that you can access the API from Javascript. </p>
+</blockquote>
 
 <h3>Unofficial experimental Open API</h3>
 <img src="images/github.png" style="float:right;"/>
-<p>Furthermore, this API is <b>unofficial</b>. API is not part of the lentodiilit.fi service and is maintained by Jarkko Moilanen. This API is open API. Source code for the API is 
-in <a href="https://github.com/kyyberi/lentodiilit">Github</a>.</p>
+<p>Furthermore, this API is <b>unofficial</b>. API is not part of the lentodiilit.fi service and is maintained by Jarkko Moilanen. </p>
 
-		<h2><a href="http://apisuomi.fi/apis/lentodiilit/api/deals">/deals</a></h2>
+<blockquote>
+<p>
+This API is open API. Source code for the API is 
+in <a href="https://github.com/kyyberi/lentodiilit">Github</a>.</p>
+</blockquote>
+
+<h2><a href="http://apisuomi.fi/apis/lentodiilit/api/deals">/deals</a></h2>
 <ul>
         <li>Returns JSON listing of 100 (max maybe less) last deals</li>
         <li>Order descending == latest first</li>
@@ -99,6 +114,19 @@ in <a href="https://github.com/kyyberi/lentodiilit">Github</a>.</p>
 </pre>
 </code>
 
+
+<h2><a href="http://apisuomi.fi/apis/lentodiilit/api/lastupdatetime">/lastupdatetime</a></h2>
+<ul>
+        <li>Returns last database update date and time inside JSON</li>
+</ul>
+
+<code>
+<pre>
+{ "lastupdatetime": [
+
+     {"datetime": "2015-01-01 11:02:49"}],
+</pre>
+</code>
 
 
 

@@ -25,9 +25,9 @@ getRoute()->get('/', array('Api', 'info'));
 
 getRoute()->get('/deals', array('Api', 'deals'));
 getRoute()->get('/deals/recent', array('Api', 'recent'));
-
 getRoute()->get('/categories', array('Api', 'categories'));
 
+getRoute()->get('/lastupdatetime', array('Api', 'lastupdatetime'));
 
 getRoute()->get('.*', array('ApiErrors', 'error404'));
 
@@ -156,6 +156,45 @@ echo $docpage;
   
   }
 
+  static public function lastupdatetime()
+  {
+        $con = Api::getConnection();
+        if (mysqli_connect_errno($con))
+        {
+                $errno = mysqli_connect_errno();
+                $reason = mysqli_connect_error();
+                ApiErrors::errorDbConnection($reason, $errno);
+        } else {
+
+
+
+                $tiedot = "{ \"lastupdatetime\": [\n";
+                $title = "";
+                $acount = "";
+                $deals = mysqli_query($con,"select date from updateinfo order by date desc LIMIT 1") 
+                         or die(ApiErrors::errorDbQuery(mysqli_error($con), mysqli_errno($con), __FUNCTION__)); 
+                $num_rows = mysqli_num_rows($deals);
+                while ($row = mysqli_fetch_array($deals)):  
+
+                        $dtime    =   $row['date'];
+                        $tiedot .= "\n     {\"datetime\": \"".$dtime."\"\n     },\n";
+                endwhile; 
+                $cout = substr($tiedot, 0, strlen($tiedot) -2);
+                $cout .="],\n";
+                // lisää rights osuus
+                $rights = Api::getRights();
+                $cout .= $rights;
+                $cout .= "\n}";
+                // palauta JSON headerilla
+                Api::outputJSON($cout);
+
+                // lisää lokiin tieto
+                // Api::addToLog($con);
+                $con->close();
+        } 
+  
+  }
+
 
 
 
@@ -238,7 +277,7 @@ echo $docpage;
    }	
 
  public function getConnection(){
-	$con = mysqli_connect("myhost","myuser","mypassw","mybd")
+	$con = mysqli_connect("myhost","myuser","mypassw","mybd");*/
 	return $con;
  }
 
@@ -257,8 +296,9 @@ echo $docpage;
  }
 
  public function getRights(){
-	$ret = "\n \"rights\": [{";
+	$ret = "\n \"meta\": [{";
         $ret .="\n    \"contentLicense\": \"http://creativecommons.org/licenses/by-sa/3.0/\",";
+        $ret .="\n    \"lastUpdateTime\": \"timestamp here\",";
         $ret .="\n    \"dataLicense\": \"http://creativecommons.org/licenses/by-sa/3.0/\",";
         $ret .="\n    \"copyrightNotice\": \"copyright lentodiilit.fi ".date('Y')."\",";
         $ret .="\n    \"attributionText\": \"Sisältö on lentodiilit.fi tuottamaa.\",";

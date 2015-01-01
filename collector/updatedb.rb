@@ -137,6 +137,28 @@ def addDeal(newurl)
 end
 
 
+def addUpdateEvent()
+
+	begin
+                #my = Mysql.new(hostname, username, password, databasename)  
+                con = Mysql.new 'localhost', 'lentodiilit', 'Zia5dekk', 'lentodiilit'
+                insertstr = "INSERT INTO updateinfo(date) VALUES(NOW());"
+                puts insertstr
+                rs = con.query(insertstr)
+
+
+        rescue Mysql::Error => e
+                puts e.errno
+                puts e.error
+
+        ensure
+                con.close if con
+        end
+
+
+
+end
+
 
 def initUpdate()
 	cururl = $baseurl 
@@ -150,4 +172,5 @@ def initUpdate()
 	end
 end
 
+addUpdateEvent()
 initUpdate()
