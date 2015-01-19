@@ -121,7 +121,7 @@ def addDeal(newurl)
 
    	begin 
 		#my = Mysql.new(hostname, username, password, databasename)  
-		con = Mysql.new 'localhost', 'lentodiilit', 'Zia5dekk', 'lentodiilit'
+		con = Mysql.new 'localhost', 'lentodiilit', '', 'lentodiilit'
 		insertstr = "INSERT INTO deal(postid, title, url, price, published, created, categories, tags) VALUES(#{dealvalues});"
 		puts insertstr
 		rs = con.query(insertstr)
@@ -141,7 +141,7 @@ def addUpdateEvent()
 
 	begin
                 #my = Mysql.new(hostname, username, password, databasename)  
-                con = Mysql.new 'localhost', 'lentodiilit', 'Zia5dekk', 'lentodiilit'
+                con = Mysql.new 'localhost', 'lentodiilit', '', 'lentodiilit'
                 insertstr = "INSERT INTO updateinfo(date) VALUES(NOW());"
                 puts insertstr
                 rs = con.query(insertstr)
