@@ -51,7 +51,7 @@ end
 def dealExists(url)
         begin
                 #my = Mysql.new(hostname, username, password, databasename)  
-                con = Mysql.new 'localhost', 'lentodiilit', 'Zia5dekk', 'lentodiilit'
+                con = Mysql.new 'localhost', 'lentodiilit', '', 'lentodiilit'
                 querystr = "select url from deal where url='#{url}'"
 		 puts querystr
                 rs = con.query(querystr)
